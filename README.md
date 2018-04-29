@@ -3,6 +3,10 @@ This project provides a course on using python for High Performance Computing.
 Although this is not classical for a interpreted language, we will see that we 
 can take advantage of many python features to go toward high performances. 
 
+Before considering performances, we will adress the problem of evaluating 
+performance, a.k.a. adressing the problem of profiling python code. 
+
+
 Among them, we will adress here:
 
 - tools for parallelisation (e.g. the threading / multiprocessing / futures / 
