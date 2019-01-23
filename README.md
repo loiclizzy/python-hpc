@@ -21,4 +21,11 @@ Among them, we will adress here:
   * f2py (to call fortran code from python)
   * swig (to wrap external code -- like C, C++, Fortranc -- and call it from python)
   
-  
+A planning projection  
+- Introduction, rappels (0,5j)
+- Numpy (0,5j)
+- Visualisation - Matplotlib... (0,5j)
+- Pandas (0,5j)
+- Documentation (0,5j)
+- Package (0,5j)
+- Calcul intensif et optimisation (1 à 2j)
