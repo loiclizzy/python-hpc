@@ -15,9 +15,15 @@ then
 >> python3 setup.py build_ext
 will compile your lib. 
 
-NOTE: 
+NOTE:
+-----
 the lib has to be found by your program. On linux (at least), this means that 
 the lib must be in a classical lib path or that the LD_LIBRARY_PATH is set 
 correctly. 
 
+Note2:
+------
+More on profiling on the stackoverflow discussion: 
+
+https://stackoverflow.com/questions/582336/how-can-you-profile-a-python-script
 
