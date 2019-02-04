@@ -7,7 +7,7 @@ and navigated through the arrows keys
 
 `time dtw_cort_dist_mat.py ../data.npy`
 
-`python3 -OO -m cProfile -s cumulative -o profile_data.pyprof dtw_cort_dist_mat.py ../data.npy`
+`python3 -m cProfile -s cumulative -o profile_data.pyprof dtw_cort_dist_mat.py ../data.npy`
 
 `pyprof2calltree -i profile_data.pyprof -k`
 
