@@ -1,14 +1,16 @@
-#!/usr/bin/python3 -OO
+#!/usr/bin/python3
 
-import pdb
+import os
 import argparse
 import numpy as np
 from cffi import FFI
 
 
 ffi = FFI()
+my_dir = os.path.dirname(os.path.realpath(__file__))
+dllib = ffi.dlopen(os.path.join(my_dir, "build", "lib.linux-x86_64-2.7", "distances.so"))
 ffi.cdef("double dtw(double* x, double* y, int size_x, int size_y);")
-dllib = ffi.dlopen("/home/thollard/Talk/2015-12-17-BigDataPython/V2_c_dtw/distances.cpython-34m.so")
+
 
 def serie_pair_index_generator(number):
     """ generator for pair index (i, j) such that i < j < number
@@ -19,6 +21,7 @@ def serie_pair_index_generator(number):
     """
     return ((_idx_greater, _idx_lower) for _idx_greater in range(number)
             for _idx_lower in range(number) if _idx_lower < _idx_greater)
+
 
 def cDTW(serie_a, serie_b):
 
@@ -37,7 +40,6 @@ def cort(s1, s2):
     :rtype: float64
 
     """
-    sum = 0.0
     num = 0.0
     sum_square_x = 0.0
     sum_square_y = 0.0
@@ -86,3 +88,5 @@ if __name__ == "__main__":
         cax1 = axes[1].imshow(_dist_mat_cort, cmap=plt.cm.gray)
         axes[1].set_title("cort")
         plt.show()
+
+
