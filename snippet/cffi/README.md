@@ -35,3 +35,21 @@ More on profiling on the stackoverflow discussion:
 
 https://stackoverflow.com/questions/582336/how-can-you-profile-a-python-script
 
+Basic timing: 
+
+```bash
+for d in V*; do echo -n "$d"; cd $d; time python3 dtw_cort_dist_mat.py ../data.npy; cd ..; done 
+V1_pure_python
+real 7,170	user 7,159	sys 0,008	pcpu 99,95
+
+V2_c_dtw
+real 1,395	user 1,369	sys 0,024	pcpu 99,88
+
+V3_c_dtw_cort_vect
+real 1,387	user 1,366	sys 0,020	pcpu 99,98
+
+V4_c_dtw_c_cort
+real 1,226	user 1,202	sys 0,024	pcpu 100,00
+
+```
+
