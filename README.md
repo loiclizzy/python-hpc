@@ -26,23 +26,32 @@ Pré-requis technique
 
 A planning projection 
 
-- Introduction, rappels langage python, gestion de src (1j) (Pierre )
-- Numpy (0,5j) (LOIC - Raphael)
+- Introduction, rappels langage python, gestion de src (1j) (Pierre - Raphael/Loic) 12/06
+
+- Numpy (0,5j) (LOIC - Raphael) 13/06 reprendre le contenu de l'initiation + vectorisation
     - fancy indexing, masking
     - broadcast
-    - vectorisation
-- Visualisation - Matplotlib et autres outils à évoquer (0,25j) (LOIC - )
-    - matplotlib orienté object (axes, features...)
-    - figures et animations
-    - voir graph plotting python jack
-- Pandas (0,25j) (Eric - Raphaël)
+    - vectorisation (vectoriser un pb ex : distance euclidienne en calcul matriciel)
+    
+- Visualisation - Matplotlib et autres outils à évoquer (0,25j) (LOIC -Raphael) 13/06
+    - matplotlib orienté object (axes, features...) Loic 
+    - figures et animations Loic
+    - voir graph plotting python jackc (raphael)
+    - point bokeh, plotly, seaborn (raphael)
+
+- Pandas (0,25j) (Eric - Raphaël) 13/06
     - load, query, display, export
-- Documentation  et package (0,5j) (Raphaël - Pierre) ex : fluidsim et autres
-- wrapping low level code and/or compiled code  (Franck - Cyrille) (0,5j)
+
+- Documentation et package (0,5j) (Raphaël - Pierre) ex : fluidsim et autres 17/06
+
+- wrapping low level code and/or compiled code  (Franck - Loic) (0,5j) 17/06
+        - présentation du running example (pour wrap/calcul intensif et optimisation)
         - cffi (for external compiled C code)
         - f2py (to call fortran code from python)
-        - swig (to wrap external code -- like C, C++, Fortran -- and call it from python)
-- Calcul intensif et optimisation (2j)
+        - swig (to wrap external code -- like C, C++, Fortran -- and call it from python) pybind11 (C++)
+
+
+- Calcul intensif et optimisation (2j) 18/06 19/06
    - Profiling  ( Pierre - Franck) (0,5)
         - cprofile (pstat...)
         - kcachegrind
@@ -52,7 +61,7 @@ A planning projection
        - using static compilers (like e.g. pythran)
        - using cython (évocation juste)
    - tools for parallelisation (e.g. the threading / multiprocessing / futures / openmp / mpi4py / GPU / joblib / dask ) ( Pierre - Franck)(0,5)
-    - Déploiement sur cluster et mésocentre (lien singularity, charlie cloud) (Cyrille - Raphaël) (0,5)
+    - Déploiement sur cluster et mésocentre (lien singularity, charlie cloud) (Franck - Raphaël) (0,5)
 
 Exemples traversaux (wrapping, optimisation...)
 Reprendre l'architecture notebook / make de la formation initiation...
