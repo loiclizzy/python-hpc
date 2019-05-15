@@ -4,10 +4,10 @@ This repository contains documents for a course on using Python for High
 Performance Computing.
 
 Although this is not classic for an interpreted language, we will see that we
-can take advantage of many python features to go toward high performances.
+can take advantage of many Python features to go toward high performances.
 
 Before considering performances, we will address the problem of evaluating
-performance, a.k.a. profiling python code.
+performance, a.k.a. profiling Python code.
 
 ## Format
 
@@ -26,43 +26,44 @@ sur 2 semaines
 - étoffer les contenus!!
 - ...
 
-## Pré-requis
+## Prerequisites
+### Required background
 
-- expérience de code avec python (voir formation python initiation UGA)
-- algo (boucles, conditions)
-- connaissances des commandes de bases linux (ls, cd, voir formation CED)
+- Coding experience with Python (see [UGA Python training](https://gricad-gitlab.univ-grenoble-alpes.fr/python-uga/py-training-2017))
+- Algorithmics (loops, conditions)
+- Knowledge of basic Linux command-line instructions (`ls`, `cd`, see [CED training]())
 
-### Pré-requis technique
+### Technical prerequisites
 
-- conda
-- spyder et vscode
-- mercurial et git
+- Python3
+- Anaconda/Miniconda
+- IDE (Spyder, VSCode...)
+- Version-control system (mercurial, git)
 
 First, install miniconda3 (see
-[here](https://docs.conda.io/en/latest/miniconda.html)) and vscode.
+[here](https://docs.conda.io/en/latest/miniconda.html)) and VSCode.
 
 To install Mercurial, you can follow the instructions
 [here](https://fluiddyn.readthedocs.io/en/latest/mercurial_bitbucket.html).
 
 ## A planning projection
 
-- Introduction, rappels langage python, gestion de src (1j) (Pierre - Raphael/Loic) 12/06
+- Introduction, rappels langage python, gestion de src (1j) (Pierre - Raphaël/Loïc) 12/06
 
-- Numpy (0,5j) (LOIC - Raphael) 13/06 reprendre le contenu de l'initiation + vectorisation
+- Numpy (0,5j) (Loïc - Raphaël) 13/06 _reprendre le contenu de l'initiation + vectorisation_
 
   - fancy indexing, masking
   - broadcast
   - vectorisation (vectoriser un pb ex : distance euclidienne en calcul matriciel)
 
-- Visualisation - Matplotlib et autres outils à évoquer (0,25j) (LOIC -Raphael) 13/06
+- Visualisation - Matplotlib and other tools (0,25j) (Loïc - Raphaël) 13/06
 
-  - matplotlib orienté object (axes, features...) Loic
-  - figures et animations Loic
-  - voir graph plotting python jackc (raphael)
-  - point bokeh, plotly, seaborn (raphael)
+  - matplotlib orienté object (axes, features...) Loïc
+  - figures et animations Loïc
+  - voir graph plotting python jackc (Raphaël)
+  - point bokeh, plotly, seaborn (Raphaël)
 
 - Pandas (0,25j) (Eric - Raphaël) 13/06
-
   - load, query, display, export
 
 - Documentation et package (0,5j) (Raphaël - Pierre) ex : fluidsim et autres 17/06
@@ -71,8 +72,8 @@ To install Mercurial, you can follow the instructions
 
   - présentation du running example (pour wrap/calcul intensif et optimisation)
   - cffi (for external compiled C code)
-  - f2py (to call fortran code from python)
-  - swig (to wrap external code -- like C, C++, Fortran -- and call it from python)
+  - f2py (to call fortran code from Python)
+  - swig (to wrap external code -- like C, C++, Fortran -- and call it from Python)
   - pybind11 (C++)
 
 - Calcul intensif et optimisation (2j) 18/06 19/06
@@ -81,12 +82,12 @@ To install Mercurial, you can follow the instructions
     - kcachegrind
     - Memory (see HPC book oreilly)
 
-  - different ways to speed up native python code (Pierre - Franck) (0,5)
+  - Different ways to speed up native Python code (Pierre - Franck) (0,5)
     - using on the fly compiler (like e.g. numba)
     - using static compilers (like e.g. pythran)
     - using cython (évocation juste)
 
-  - tools for parallelisation (e.g. the threading / multiprocessing / futures / openmp / mpi4py / GPU / joblib / dask ) (Pierre - Franck)(0,5)
+  - Tools for parallelisation (e.g. the threading / multiprocessing / futures / openmp / mpi4py / GPU / joblib / dask ) (Pierre - Franck)(0,5)
 
   - Déploiement sur cluster et mésocentre (lien singularity, charlie cloud) (Franck - Raphaël) (0,5)
 
@@ -101,7 +102,7 @@ Exemples tranversaux (wrapping, optimisation...)
 |---------|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 | Eric    |      |      |      |  x   |      |      |      |      |      |      |
 | Franck  |      |      |      |      |      |  x   |  x   |  x   |  x   |  x   |
-| Loic    |      |      |  x   |  x   |      |  x   |      |      |      |      |
+| Loïc    |      |      |  x   |  x   |      |  x   |      |      |      |      |
 | Raphaël |  x   |   x  |  x   |  x   |  x   |      |      |      |      |  x   |
 | Pierre  |  x   |   x  |      |      |  x   |      |  x   |  x   |  x   |      |
 | Cyrille |      |      |      |      |      |      |      |      |      |      |
