@@ -8,7 +8,7 @@ from cffi import FFI
 ffi = FFI()
 ffi.cdef("double dtw(double* x, double* y, int size_x, int size_y);")
 my_dir = os.path.dirname(os.path.realpath(__file__))
-dllib = ffi.dlopen(os.path.join(my_dir, "build", "lib.linux-x86_64-2.7", "distances.so"))
+dllib = ffi.dlopen(os.path.join(my_dir, "build", "lib.linux-x86_64-3.7", "distances.so"))
 
 
 def serie_pair_index_generator(number):
