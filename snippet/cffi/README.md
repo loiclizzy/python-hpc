@@ -59,18 +59,17 @@ real 0,229	user 0,212	sys 0,016	pcpu 99,97
 Timing computation:
 
 ```
-for d in V*; do echo -n "$d"; cd $d; ./dtw_cort_dist_mat.py; cd ..; done
+for d in V*; do echo -n "$d"; $d/dtw_cort_dist_mat.py; done
 V1_pure_python
-elapsed time = 9.961 s
+elapsed time = 10.314 s
 V2_c_dtw
-elapsed time = 1.962 s
+elapsed time = 1.923 s
 V5_cython
-elapsed time = 0.146 s
+elapsed time = 0.155 s
 V6_pythran
 elapsed time = 0.021 s
 V7_pythran_slow
-elapsed time = 1.326 s
+elapsed time = 1.323 s
 V8_numba
 elapsed time = 0.947 s
-
 ```

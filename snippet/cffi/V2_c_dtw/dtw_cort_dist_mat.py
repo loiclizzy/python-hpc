@@ -1,16 +1,21 @@
 #!/usr/bin/env python
 
-import os
-import argparse
+from functools import partial
+from runpy import run_path
+from pathlib import Path
+
 import numpy as np
 from cffi import FFI
 import sysconfig
 
+util = run_path(Path(__file__).parent.parent / "util.py")
+
+
 ffi = FFI()
 ffi.cdef("double dtw(double* x, double* y, int size_x, int size_y);")
-my_dir = os.path.dirname(os.path.realpath(__file__))
+my_dir = Path(__file__).parent
 dllib = ffi.dlopen(
-    os.path.join(my_dir, "distances" + sysconfig.get_config_var("EXT_SUFFIX"))
+    str(my_dir / ("distances" + sysconfig.get_config_var("EXT_SUFFIX")))
 )
 
 
@@ -58,35 +63,7 @@ def cort(s1, s2):
     return num / (np.sqrt(sum_square_x * sum_square_y))
 
 
-if __name__ == "__main__":
-    PARSER = argparse.ArgumentParser(
-        description="Computes the distance matrix btw series"
-    )
-    PARSER.add_argument(
-        "input", type=str, help="input file ", nargs="?", default="../data.npy"
-    )
-    PARSER.add_argument(
-        "-n", type=int, default=None, help="number of series (default all 200)"
-    )
-    PARSER.add_argument(
-        "-v", action="store_true", default=None, help="visualize the matrix"
-    )
-
-    ARGS = PARSER.parse_args()
-
-    series = None
-    # load the input data
-    series = np.load(ARGS.input)
-
-    if ARGS.n:
-        nb_series = ARGS.n
-    else:
-        nb_series = series.shape[0]
-
-    from time import time
-
-    t0 = time()
-
+def compute(series, nb_series):
     gen = serie_pair_index_generator(nb_series)
 
     _dist_mat_dtw = np.zeros((nb_series, nb_series), dtype=np.float64)
@@ -99,14 +76,10 @@ if __name__ == "__main__":
         _dist_mat_cort[t1, t2] = dist_cort
         _dist_mat_cort[t2, t1] = dist_cort
 
-    print("\nelapsed time = {:.3f} s".format(time() - t0))
+    return _dist_mat_dtw, _dist_mat_cort
 
-    if ARGS.v:
-        import matplotlib.pyplot as plt
 
-        fig, axes = plt.subplots(2)
-        cax0 = axes[0].imshow(_dist_mat_dtw, cmap=plt.cm.gray)
-        axes[0].set_title("dtw")
-        cax1 = axes[1].imshow(_dist_mat_cort, cmap=plt.cm.gray)
-        axes[1].set_title("cort")
-        plt.show()
+main = partial(util["main"], compute)
+
+if __name__ == "__main__":
+    main()
