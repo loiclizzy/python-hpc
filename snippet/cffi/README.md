@@ -1,11 +1,11 @@
-Slides are available in 
+Slides are available in
 profile_python.svg
-which can be visualize using a web browser 
+which can be visualize using a web browser
 and navigated through the arrows keys
 
 #### commands for profiling
 
-`time dtw_cort_dist_mat.py ../data.npy`
+`time ./dtw_cort_dist_mat.py ../data.npy`
 
 `python3 -m cProfile -s cumulative -o profile_data.pyprof dtw_cort_dist_mat.py ../data.npy`
 
@@ -17,28 +17,28 @@ see the setup.py file (in particular things related to the ext_modules:
 
 ext_modules=[module_distance]
 
-then 
+then
 
 `python3 setup.py build_ext`
 
-will compile your lib. 
+will compile your lib.
 
-NOTE:
------
-the lib has to be found by your program. On linux (at least), this means that 
-the lib must be in a classical lib path or that the LD_LIBRARY_PATH is set 
-correctly. 
+##### NOTE:
 
-Note2:
-------
-More on profiling on the stackoverflow discussion: 
+the lib has to be found by your program. On linux (at least), this means that
+the lib must be in a classical lib path or that the LD_LIBRARY_PATH is set
+correctly.
+
+##### Note2:
+
+More on profiling on the stackoverflow discussion:
 
 https://stackoverflow.com/questions/582336/how-can-you-profile-a-python-script
 
-Basic timing: 
+Basic timing:
 
 ```bash
-for d in V*; do echo -n "$d"; cd $d; time python3 dtw_cort_dist_mat.py ../data.npy; cd ..; done 
+for d in V*; do echo -n "$d"; cd $d; time python3 dtw_cort_dist_mat.py ../data.npy; cd ..; done
 V1_pure_python
 real 7,170	user 7,159	sys 0,008	pcpu 99,95
 
@@ -56,4 +56,21 @@ real 0,229	user 0,212	sys 0,016	pcpu 99,97
 
 ```
 
+Timing computation:
 
+```
+for d in V*; do echo -n "$d"; cd $d; ./dtw_cort_dist_mat.py; cd ..; done
+V1_pure_python
+elapsed time = 9.961 s
+V2_c_dtw
+elapsed time = 1.962 s
+V5_cython
+elapsed time = 0.146 s
+V6_pythran
+elapsed time = 0.021 s
+V7_pythran_slow
+elapsed time = 1.326 s
+V8_numba
+elapsed time = 0.947 s
+
+```

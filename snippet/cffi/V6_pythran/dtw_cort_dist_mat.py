@@ -3,6 +3,8 @@
 import argparse
 import numpy as np
 
+from transonic import boost
+
 
 def serie_pair_index_generator(number):
     """ generator for pair index (i, j) such that i < j < number
@@ -27,24 +29,31 @@ def DTWDistance(s1, s2):
     :returns: the dtw distance
     :rtype: float64
     """
-    _dtw_mat = {}
+    len_s1 = len(s1)
+    len_s2 = len(s2)
 
-    for i in range(len(s1)):
-        _dtw_mat[(i, -1)] = float("inf")
-    for i in range(len(s2)):
-        _dtw_mat[(-1, i)] = float("inf")
-    _dtw_mat[(-1, -1)] = 0
+    _dtw_mat = np.empty([len_s1, len_s2])
+    _dtw_mat[0, 0] = abs(s1[0] - s2[0])
 
-    for i in range(len(s1)):
-        for j in range(len(s2)):
+    #  two special cases : filling first row and columns
+
+    for j in range(1, len_s2):
+        dist = abs(s1[0] - s2[j])
+        _dtw_mat[0, j] = dist + _dtw_mat[0, j - 1]
+
+    for i in range(1, len_s1):
+        dist = abs(s1[i] - s2[0])
+        _dtw_mat[i, 0] = dist + _dtw_mat[(i - 1, 0)]
+
+    #  filling the matrix
+    for i in range(1, len_s1):
+        for j in range(1, len_s2):
             dist = abs(s1[i] - s2[j])
             _dtw_mat[(i, j)] = dist + min(
-                _dtw_mat[(i - 1, j)],
-                _dtw_mat[(i, j - 1)],
-                _dtw_mat[(i - 1, j - 1)],
+                _dtw_mat[i - 1, j], _dtw_mat[i, j - 1], _dtw_mat[i - 1, j - 1]
             )
 
-    return _dtw_mat[len(s1) - 1, len(s2) - 1]
+    return _dtw_mat[len_s1 - 1, len_s2 - 1]
 
 
 def cort(s1, s2):
@@ -68,7 +77,8 @@ def cort(s1, s2):
     return num / (np.sqrt(sum_square_x * sum_square_y))
 
 
-def compute(series, nb_series):
+@boost
+def compute(series: "float64[:, :]", nb_series: int):
     gen = serie_pair_index_generator(nb_series)
     _dist_mat_dtw = np.zeros((nb_series, nb_series), dtype=np.float64)
     _dist_mat_cort = np.zeros((nb_series, nb_series), dtype=np.float64)
@@ -83,7 +93,7 @@ def compute(series, nb_series):
     return _dist_mat_dtw, _dist_mat_cort
 
 
-def main():
+def main(only_init=False):
 
     parser = argparse.ArgumentParser(
         description="Computes the distance matrix btw series"
@@ -109,7 +119,11 @@ def main():
     else:
         nb_series = series.shape[0]
 
+    if only_init:
+        return series, nb_series
+
     from time import time
+
     t0 = time()
     _dist_mat_dtw, _dist_mat_cort = compute(series, nb_series)
     print('\nelapsed time = {:.3f} s'.format(time()- t0))
