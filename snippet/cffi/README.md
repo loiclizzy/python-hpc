@@ -51,5 +51,9 @@ real 1,387	user 1,366	sys 0,020	pcpu 99,98
 V4_c_dtw_c_cort
 real 1,226	user 1,202	sys 0,024	pcpu 100,00
 
+V5_cython
+real 0,229	user 0,212	sys 0,016	pcpu 99,97
+
 ```
+
 
