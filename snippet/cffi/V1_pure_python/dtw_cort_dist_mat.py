@@ -4,6 +4,7 @@
 import argparse
 import numpy as np
 
+
 def serie_pair_index_generator(number):
     """ generator for pair index (i, j) such that i < j < number
 
@@ -14,6 +15,7 @@ def serie_pair_index_generator(number):
     return ((_idx_greater, _idx_lower) for _idx_greater in range(number)
             for _idx_lower in range(number) if _idx_lower < _idx_greater)
 
+
 def DTWDistance(s1, s2):
     """ Computes the dtw between s1 and s2 with distance the absolute distance
 
@@ -22,7 +24,7 @@ def DTWDistance(s1, s2):
     :returns: the dtw distance
     :rtype: float64
     """
-    _dtw_mat={}
+    _dtw_mat = {}
 
     for i in range(len(s1)):
         _dtw_mat[(i, -1)] = float('inf')
@@ -32,10 +34,13 @@ def DTWDistance(s1, s2):
 
     for i in range(len(s1)):
         for j in range(len(s2)):
-            dist= abs(s1[i]-s2[j])
-            _dtw_mat[(i, j)] = dist + min(_dtw_mat[(i-1, j)],_dtw_mat[(i, j-1)], _dtw_mat[(i-1, j-1)])
+            dist = abs(s1[i]-s2[j])
+            _dtw_mat[(i, j)] = dist + min(_dtw_mat[(i-1, j)],
+                                          _dtw_mat[(i, j-1)],
+                                          _dtw_mat[(i-1, j-1)])
 
     return _dtw_mat[len(s1)-1, len(s2)-1]
+
 
 def cort(s1, s2):
     """ Computes the cort between serie one and two (assuming they have the same length)
@@ -46,7 +51,6 @@ def cort(s1, s2):
     :rtype: float64
 
     """
-    sum = 0.0
     num = 0.0
     sum_square_x = 0.0
     sum_square_y = 0.0
@@ -59,10 +63,31 @@ def cort(s1, s2):
     return num/(np.sqrt(sum_square_x*sum_square_y))
 
 
+def compute_dists_save(outfile):
+    """Computes both dtw and cort dissimilarity measure and save them to outfile
+
+    :series:  (numpy arr) series to be compared. Has to be of same length for cort
+    :outfile: (str) name of file to save
+    """
+    nb_series = series.shape[0]
+    gen = serie_pair_index_generator(nb_series)
+    _dist_mat_dtw = np.zeros((nb_series, nb_series), dtype=np.float64)
+    _dist_mat_cort = np.zeros((nb_series, nb_series), dtype=np.float64)
+    for t1, t2 in gen:
+        dist_dtw = DTWDistance(series[t1], series[t2])
+        _dist_mat_dtw[t1, t2] = dist_dtw
+        _dist_mat_dtw[t2, t1] = dist_dtw
+        dist_cort = 0.5*(1-cort(series[t1], series[t2]))
+        _dist_mat_cort[t1, t2] = dist_cort
+        _dist_mat_cort[t2, t1] = dist_cort
+    np.savez(outfile, _dist_mat_dtw, _dist_mat_cort)
+
+
 if __name__ == "__main__":
     PARSER = argparse.ArgumentParser(description="Computes the distance matrix btw series")
     PARSER.add_argument("input", type=str, help="input file ")
     PARSER.add_argument("-n", type=int, default=None, help="number of series (default all 200)")
+    PARSER.add_argument("-s", type=str, default=None, help="save distance matrices")
     PARSER.add_argument("-v", action="store_true", default=None, help="visualize the matrix")
 
     ARGS = PARSER.parse_args()
@@ -86,6 +111,8 @@ if __name__ == "__main__":
         _dist_mat_cort[t1, t2] = dist_cort
         _dist_mat_cort[t2, t1] = dist_cort
 
+    if ARGS.s:
+        np.savez(ARGS.s, _dist_mat_dtw, _dist_mat_cort)
 
     if ARGS.v:
         import matplotlib.pyplot as plt
