@@ -49,7 +49,7 @@ def DTWDistance(s1, s2):
 
     for i in range(1, len_s1):
         dist = abs(s1[i] - s2[0])
-        _dtw_mat[i, 0] = dist + _dtw_mat[(i - 1, 0)]
+        _dtw_mat[i, 0] = dist + _dtw_mat[i - 1, 0]
 
     #  filling the matrix
     for i in range(1, len_s1):
