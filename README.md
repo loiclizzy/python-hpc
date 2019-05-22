@@ -105,14 +105,23 @@ We will have to use Python 3 (with Miniconda3), a good Python IDE (either
 Spyder or VSCode), Jupyter and a version-control tool (Mercurial, or Git if you
 know it and really like it).
 
-We give indications about how to install these tools and how to get the
-repository of this training locally on your computer. Please, try to do this
-before the training and tell us if you encounter problems. You can fill an
-issue
+In the following, we give indications about how to install these tools and how
+to get the repository of this training locally on your computer. Please, try to
+do this before the training and tell us if you encounter problems. You can fill
+an issue
 [here](https://gricad-gitlab.univ-grenoble-alpes.fr/python-uga/training-hpc/issues)
 to explain what you did and what are the errors (please copy / paste the error
 log).
 
+Moreover, let's add that the best OS for HPC (and HPC with Python) is
+Linux/GNU. Windows (at least without
+[WLS](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux)) and even
+macOS are less adapted for this particular application. Python is a
+cross-platform language but nevertheless, you will get a better experience for
+HPC with Python on Linux. Therefore, we encourage the participant to work
+during this training with a (real or `virtual
+<https://www.virtualbox.org/wiki/Downloads>`_) Linux machine. Of course, if you
+can't or don't want to use Linux, come with your computer on Windows or macOS.
 
 #### Install Python and utilities
 
@@ -164,12 +173,9 @@ Finally, you can check that your Python environment is all fine with:
 
 #### Build the presentations
 
-You need Jupyter, make and rst2html5.
-
-- If you don't have `make` on your system (for example on Windows), you should
-be able to install it with `conda install make`.
-
-- rst2html5 is installable with `pip install rst2html5`.
+One needs Jupyter, rst2html5 (installable with `pip install rst2html5`), plus
+`make` and few other Unix tools. Therefore, it is not easy to build the website
+on Windows.
 
 Then, `make presentations` should build the presentations and `make serve`
-should start a server to visualize them.
+should start a server to visualize them in a browser.
