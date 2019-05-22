@@ -14,11 +14,6 @@ for path in ipynb_files:
     path_html = name + ".slides.html"
     lines[day].append(f"- `{text} <{path_html}>`_")
 
-# for day in range(4):
-
-# print(lines)
-
-
 back = "\n"
 
 code = """

@@ -126,9 +126,9 @@ You will need to activate the conda channel `conda-forge` with:
 
 ```conda config --add channels conda-forge```
 
-With miniconda, it should be simple to install Spyder and Jupyter either with the
-command `conda install spyder jupyter` or using the graphical tool [Anaconda
-Navigator](https://docs.anaconda.com/anaconda/navigator/).
+With miniconda, it should be simple to install Spyder and Jupyter either with
+the command `conda install spyder jupyter-lab` or using the graphical tool
+[Anaconda Navigator](https://docs.anaconda.com/anaconda/navigator/).
 
 To install and setup Mercurial, you can follow the instructions
 [here](https://fluiddyn.readthedocs.io/en/latest/mercurial_bitbucket.html).
@@ -137,7 +137,6 @@ Warning: Mercurial **has to be correctly setup**! Since we will use [the Gitlab
 instance of UGA](https://gricad-gitlab.univ-grenoble-alpes.fr), the Mercurial
 extension hg-git has to be activated so the line `hggit =` in the configuration
 file is mandatory.
-
 
 #### Clone this repository
 
@@ -162,3 +161,15 @@ and you should be able to enter into it with `cd training-hpc`.
 Finally, you can check that your Python environment is all fine with:
 
 ```python check_env.py```
+
+#### Build the presentations
+
+You need Jupyter, make and rst2html5.
+
+- If you don't have `make` on your system (for example on Windows), you should
+be able to install it with `conda install make`.
+
+- rst2html5 is installable with `pip install rst2html5`.
+
+Then, `make presentations` should build the presentations and `make serve`
+should start a server to visualize them.
