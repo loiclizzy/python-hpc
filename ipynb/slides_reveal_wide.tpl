@@ -1,6 +1,19 @@
 {%- extends 'basic.tpl' -%}
 {% from 'mathjax.tpl' import mathjax %}
 
+// added by Pierre Augier
+{%- block input_group scoped -%}
+{%- if not cell.metadata.get('source_hidden', False) -%}
+{{ super() }}
+{%- endif -%}
+{%- endblock input_group -%}
+
+{%- block output_prompt -%}
+{%- if not cell.metadata.get('source_hidden', False) -%}
+{{ super() }}
+{%- endif -%}
+{%- endblock output_prompt -%}
+
 {%- block any_cell scoped -%}
 {%- if cell.metadata.get('slide_start', False) -%}
 <section>
@@ -189,7 +202,12 @@ require(
             controls: true,
             progress: true,
             history: true,
-            width: 1200, 
+
+            // changed by Pierre Augier
+            width: '85%',
+            height: '100%',
+            slideNumber: true,
+
             theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
             transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
 

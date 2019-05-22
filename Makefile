@@ -40,7 +40,7 @@ ipynb/index.html: ipynb/index.rst
 	cd $(IPYNBDIR) && rst2html5 index.rst > index.html
 
 %.slides.html: %.ipynb ipynb/slides_reveal_wide.tpl
-	jupyter-nbconvert $< --to slides --template ipynb/slides_reveal_wide.tpl
+	jupyter-nbconvert $< --reveal-prefix='./reveal.js' --to slides --template ipynb/slides_reveal_wide.tpl
 
 presentations: $(IPYNBPRES) ipynb/index.html
 
