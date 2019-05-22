@@ -9,7 +9,9 @@ can take advantage of many Python features to go toward high performances.
 Before considering performances, we will address the problem of evaluating
 performance, a.k.a. profiling Python code.
 
-## Format
+
+
+## Format et dates
 
 sur 2 semaines
 
@@ -17,58 +19,47 @@ sur 2 semaines
 - 1 jour doc et package
 - 2 jours contigus calcul intensif et optimisation
 
-## Dates 1st session
+#### Dates sessions
 
-12-13/06/2019 and 17-19/06/2019
-
-## TODO
-
-- étoffer les contenus!!
-- ...
+- 12-13/06/2019 et 17-19/06/2019
 
 ## Prerequisites
-### Required background
 
-- Coding experience with Python (see [UGA Python training](https://gricad-gitlab.univ-grenoble-alpes.fr/python-uga/py-training-2017))
+- Coding experience with Python (see [UGA Python
+  training](https://gricad-gitlab.univ-grenoble-alpes.fr/python-uga/py-training-2017))
+
 - Algorithmics (loops, conditions)
-- Knowledge of basic Linux command-line instructions (`ls`, `cd`, see [CED training]())
 
-### Technical prerequisites
+- Knowledge of basic Linux command-line instructions (`ls`, `cd`)
 
-- Python3
-- Anaconda/Miniconda
-- IDE (Spyder, VSCode...)
-- Version-control system (mercurial, git)
+## Planning
 
-First, install miniconda3 (see
-[here](https://docs.conda.io/en/latest/miniconda.html)) and VSCode.
+- Introduction, rappels langage Python et gestion de src [1j : 12/06] (Pierre,
+Raphaël et Loïc)
 
-To install Mercurial, you can follow the instructions
-[here](https://fluiddyn.readthedocs.io/en/latest/mercurial_bitbucket.html).
+- Numpy [0,5j : 13/06] (Loïc et Raphaël)
 
-## A planning projection
-
-- Introduction, rappels langage python, gestion de src (1j) (Pierre - Raphaël/Loïc) 12/06
-
-- Numpy (0,5j) (Loïc - Raphaël) 13/06 _reprendre le contenu de l'initiation + vectorisation_
+  _reprendre le contenu de l'initiation + vectorisation_
 
   - fancy indexing, masking
   - broadcast
   - vectorisation (vectoriser un pb ex : distance euclidienne en calcul matriciel)
 
-- Visualisation - Matplotlib and other tools (0,25j) (Loïc - Raphaël) 13/06
+- Visualisation - Matplotlib and other tools [0,25j : 13/06] (Loïc et Raphaël)
 
   - matplotlib orienté object (axes, features...) Loïc
   - figures et animations Loïc
   - voir graph plotting python jackc (Raphaël)
   - point bokeh, plotly, seaborn (Raphaël)
 
-- Pandas (0,25j) (Eric - Raphaël) 13/06
+- Pandas [0,25j : 13/06] (Eric - Raphaël)
   - load, query, display, export
 
-- Documentation et package (0,5j) (Raphaël - Pierre) ex : fluidsim et autres 17/06
+- Packaging et documentation [0,5j : 17/06] (Raphaël et Pierre)
 
-- wrapping low level code and/or compiled code  (Franck - Loic) (0,5j) 17/06
+  ex : fluidsim et autres
+
+- wrapping low level code and/or compiled code [0,5j : 17/06] (Franck et Loic)
 
   - présentation du running example (pour wrap/calcul intensif et optimisation)
   - cffi (for external compiled C code)
@@ -76,20 +67,21 @@ To install Mercurial, you can follow the instructions
   - swig (to wrap external code -- like C, C++, Fortran -- and call it from Python)
   - pybind11 (C++)
 
-- Calcul intensif et optimisation (2j) 18/06 19/06
-  - Profiling  (Pierre - Franck) (0,5)
+- Calcul intensif et optimisation [2j : 18/06 et 19/06]
+
+  - Profiling (Pierre et Franck)
     - cprofile (pstat...)
     - kcachegrind
     - Memory (see HPC book oreilly)
 
-  - Different ways to speed up native Python code (Pierre - Franck) (0,5)
+  - Different ways to speed up native Python code (Pierre - Franck)
     - using on the fly compiler (like e.g. numba)
     - using static compilers (like e.g. pythran)
     - using cython (évocation juste)
 
-  - Tools for parallelisation (e.g. the threading / multiprocessing / futures / openmp / mpi4py / GPU / joblib / dask ) (Pierre - Franck)(0,5)
+  - Tools for parallelisation (e.g. threading / multiprocessing / futures / openmp / mpi4py / GPU / joblib / dask ) (Pierre - Franck)
 
-  - Déploiement sur cluster et mésocentre (lien singularity, charlie cloud) (Franck - Raphaël) (0,5)
+  - Déploiement sur cluster et mésocentre (lien singularity, charlie cloud) (Franck - Raphaël)
 
 Exemples tranversaux (wrapping, optimisation...)
 
@@ -106,3 +98,67 @@ Exemples tranversaux (wrapping, optimisation...)
 | Raphaël |  x   |   x  |  x   |  x   |  x   |      |      |      |      |  x   |
 | Pierre  |  x   |   x  |      |      |  x   |      |  x   |  x   |  x   |      |
 | Cyrille |      |      |      |      |      |      |      |      |      |      |
+
+## To be done before the first day of the training session
+
+We will have to use Python 3 (with Miniconda3), a good Python IDE (either
+Spyder or VSCode), Jupyter and a version-control tool (Mercurial, or Git if you
+know it and really like it).
+
+We give indications about how to install these tools and how to get the
+repository of this training locally on your computer. Please, try to do this
+before the training and tell us if you encounter problems. You can fill an
+issue
+[here](https://gricad-gitlab.univ-grenoble-alpes.fr/python-uga/training-hpc/issues)
+to explain what you did and what are the errors (please copy / paste the error
+log).
+
+
+#### Install Python and utilities
+
+The first steps are to install miniconda3 (see
+[here](https://docs.conda.io/en/latest/miniconda.html)) and VSCode (see
+[here](https://code.visualstudio.com/download)).
+
+On Windows, all commands have to be run in the conda prompt.
+
+You will need to activate the conda channel `conda-forge` with:
+
+```conda config --add channels conda-forge```
+
+With miniconda, it should be simple to install Spyder and Jupyter either with the
+command `conda install spyder jupyter` or using the graphical tool [Anaconda
+Navigator](https://docs.anaconda.com/anaconda/navigator/).
+
+To install and setup Mercurial, you can follow the instructions
+[here](https://fluiddyn.readthedocs.io/en/latest/mercurial_bitbucket.html).
+
+Warning: Mercurial **has to be correctly setup**! Since we will use [the Gitlab
+instance of UGA](https://gricad-gitlab.univ-grenoble-alpes.fr), the Mercurial
+extension hg-git has to be activated so the line `hggit =` in the configuration
+file is mandatory.
+
+
+#### Clone this repository
+
+Once everything is installed and setup, you should be able to clone the
+repository of the training with:
+
+```hg clone https://gricad-gitlab.univ-grenoble-alpes.fr/python-uga/training-hpc.git```
+
+Please tell us before the training if it does not work.
+
+#### Install few packages in your base conda environment
+
+```
+conda install ipython spyder jupyter numpy scipy pandas matplotlib
+```
+
+#### Check your environment
+
+Once the repository is cloned you should have a new directory `training-hpc`
+and you should be able to enter into it with `cd training-hpc`.
+
+Finally, you can check that your Python environment is all fine with:
+
+```python check_env.py```
