@@ -21,7 +21,7 @@ endef
 
 export STR_HELP
 
-.PHONY: help lab serve presentations
+.PHONY: help lab serve presentations ipynb/index.rst
 
 help:
 	@echo "$$STR_HELP"
@@ -33,11 +33,14 @@ clean:
 lab:
 	jupyter-lab
 
+ipynb/index.rst:
+	python ipynb/make_index.py
+
 ipynb/index.html: ipynb/index.rst
 	cd $(IPYNBDIR) && rst2html5 index.rst > index.html
 
 %.slides.html: %.ipynb ipynb/slides_reveal_wide.tpl
-	jupyter-nbconvert $< --to slides --template ipynb/slides_reveal_wide.tpl
+	jupyter-nbconvert $< --reveal-prefix='./reveal.js' --to slides --template ipynb/slides_reveal_wide.tpl
 
 presentations: $(IPYNBPRES) ipynb/index.html
 

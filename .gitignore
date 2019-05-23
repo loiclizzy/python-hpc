@@ -13,7 +13,7 @@ __pythran__
 .vscode
 
 ipynb/*.slides.html
-
+ipynb/index.rst
 */.ipynb_checkpoints/*
 
 **/*.egg-info/
