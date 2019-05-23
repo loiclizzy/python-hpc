@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from functools import partial
 from runpy import run_path
@@ -8,8 +8,9 @@ import numpy as np
 
 from dtw_cort import cort, DTWDistance
 
-util = run_path(Path(__file__).parent.parent / "util.py")
+print("util = {}".format(Path(__file__).parent.parent))
 
+util = run_path(Path(__file__).parent.parent / "util.py")
 
 def serie_pair_index_generator(number):
     """ generator for pair index (i, j) such that i < j < number
