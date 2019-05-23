@@ -5,10 +5,19 @@ from runpy import run_path
 from pathlib import Path
 
 import numpy as np
+from cffi import FFI
+import sysconfig
 
-from numba import jit
+util = run_path(Path(__file__).absolute().parent.parent / "util.py")
 
-util = run_path(Path(__file__).parent.parent / "util.py")
+
+ffi = FFI()
+
+ffi.cdef("double dtw(double* x, double* y, int size_x, int size_y);")
+my_dir = Path(__file__).absolute().parent
+dllib = ffi.dlopen(
+    str(my_dir / ("distances" + sysconfig.get_config_var("EXT_SUFFIX")))
+)
 
 
 def serie_pair_index_generator(number):
@@ -26,43 +35,14 @@ def serie_pair_index_generator(number):
     )
 
 
-@jit
-def DTWDistance(s1, s2):
-    """ Computes the dtw between s1 and s2 with distance the absolute distance
+def cDTW(serie_a, serie_b):
 
-    :param s1: the first serie (ie an iterable over floats64)
-    :param s2: the second serie (ie an iterable over floats64)
-    :returns: the dtw distance
-    :rtype: float64
-    """
-    len_s1 = len(s1)
-    len_s2 = len(s2)
-
-    _dtw_mat = np.empty([len_s1, len_s2])
-    _dtw_mat[0, 0] = abs(s1[0] - s2[0])
-
-    #  two special cases : filling first row and columns
-
-    for j in range(1, len_s2):
-        dist = abs(s1[0] - s2[j])
-        _dtw_mat[0, j] = dist + _dtw_mat[0, j - 1]
-
-    for i in range(1, len_s1):
-        dist = abs(s1[i] - s2[0])
-        _dtw_mat[i, 0] = dist + _dtw_mat[i - 1, 0]
-
-    #  filling the matrix
-    for i in range(1, len_s1):
-        for j in range(1, len_s2):
-            dist = abs(s1[i] - s2[j])
-            _dtw_mat[(i, j)] = dist + min(
-                _dtw_mat[i - 1, j], _dtw_mat[i, j - 1], _dtw_mat[i - 1, j - 1]
-            )
-
-    return _dtw_mat[len_s1 - 1, len_s2 - 1]
+    a_ptr = ffi.cast("double*", serie_a.ctypes.data)
+    b_ptr = ffi.cast("double*", serie_b.ctypes.data)
+    ret = dllib.dtw(a_ptr, b_ptr, len(serie_a), len(serie_b))
+    return ret
 
 
-@jit
 def cort(s1, s2):
     """ Computes the cort between serie one and two (assuming they have the same length)
 
@@ -86,10 +66,11 @@ def cort(s1, s2):
 
 def compute(series, nb_series):
     gen = serie_pair_index_generator(nb_series)
+
     _dist_mat_dtw = np.zeros((nb_series, nb_series), dtype=np.float64)
     _dist_mat_cort = np.zeros((nb_series, nb_series), dtype=np.float64)
     for t1, t2 in gen:
-        dist_dtw = DTWDistance(series[t1], series[t2])
+        dist_dtw = cDTW(series[t1], series[t2])
         _dist_mat_dtw[t1, t2] = dist_dtw
         _dist_mat_dtw[t2, t1] = dist_dtw
         dist_cort = 0.5 * (1 - cort(series[t1], series[t2]))
@@ -102,5 +83,4 @@ def compute(series, nb_series):
 main = partial(util["main"], compute)
 
 if __name__ == "__main__":
-
     main()

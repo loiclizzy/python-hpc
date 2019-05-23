@@ -8,7 +8,7 @@ import numpy as np
 
 from dtw_cort import cort, DTWDistance
 
-util = run_path(Path(__file__).parent.parent / "util.py")
+util = run_path(Path(__file__).absolute().parent.parent / "util.py")
 
 
 def serie_pair_index_generator(number):
@@ -45,5 +45,4 @@ main = partial(util["main"], compute)
 
 
 if __name__ == "__main__":
-
     main()

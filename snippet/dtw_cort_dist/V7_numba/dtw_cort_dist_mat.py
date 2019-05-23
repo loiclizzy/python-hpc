@@ -6,7 +6,10 @@ from pathlib import Path
 
 import numpy as np
 
-util = run_path(Path(__file__).parent.parent / "util.py")
+from numba import jit
+
+util = run_path(Path(__file__).absolute().parent.parent / "util.py")
+
 
 def serie_pair_index_generator(number):
     """ generator for pair index (i, j) such that i < j < number
@@ -23,6 +26,7 @@ def serie_pair_index_generator(number):
     )
 
 
+@jit(cache=True)
 def DTWDistance(s1, s2):
     """ Computes the dtw between s1 and s2 with distance the absolute distance
 
@@ -58,6 +62,7 @@ def DTWDistance(s1, s2):
     return _dtw_mat[len_s1 - 1, len_s2 - 1]
 
 
+@jit(nopython=True, cache=True)
 def cort(s1, s2):
     """ Computes the cort between serie one and two (assuming they have the same length)
 
@@ -79,6 +84,8 @@ def cort(s1, s2):
     return num / (np.sqrt(sum_square_x * sum_square_y))
 
 
+# slower with @jit...
+# @jit
 def compute(series, nb_series):
     gen = serie_pair_index_generator(nb_series)
     _dist_mat_dtw = np.zeros((nb_series, nb_series), dtype=np.float64)
@@ -97,4 +104,5 @@ def compute(series, nb_series):
 main = partial(util["main"], compute)
 
 if __name__ == "__main__":
+
     main()
