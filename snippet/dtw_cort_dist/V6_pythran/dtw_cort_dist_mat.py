@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from functools import partial
 from runpy import run_path
@@ -50,7 +50,7 @@ def DTWDistance(s1, s2):
         dist = abs(s1[i] - s2[0])
         _dtw_mat[i, 0] = dist + _dtw_mat[i - 1, 0]
 
-    #  filling the matrix
+    #  filling the matrix
     for i in range(1, len_s1):
         for j in range(1, len_s2):
             dist = abs(s1[i] - s2[j])
