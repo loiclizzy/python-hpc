@@ -136,7 +136,7 @@ You will need to activate the conda channel `conda-forge` with:
 ```conda config --add channels conda-forge```
 
 With miniconda, it should be simple to install Spyder and Jupyter either with
-the command `conda install spyder jupyter-lab` or using the graphical tool
+the command `conda install spyder jupyterlab` or using the graphical tool
 [Anaconda Navigator](https://docs.anaconda.com/anaconda/navigator/).
 
 To install and setup Mercurial, you can follow the instructions
@@ -177,5 +177,5 @@ One needs Jupyter, rst2html5 (installable with `pip install rst2html5`), plus
 `make` and few other Unix tools. Therefore, it is not easy to build the website
 on Windows.
 
-Then, `make presentations` should build the presentations and `make serve`
-should start a server to visualize them in a browser.
+On Unix-like systems, `make presentations` should build the presentations and
+`make serve` should start a server to visualize them in a browser.
