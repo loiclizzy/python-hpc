@@ -92,7 +92,7 @@ Exemples tranversaux (wrapping, optimisation...)
 
 |         | m 12 | a 12 | m 13 | a 13 | m 17 | a 17 | m 18 | a 18 | m 19 | a 19 |
 |---------|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| Eric    |      |      |      |  x   |      |      |      |      |      |      |
+| Eric    | (x)  | (x)  | (x)  | (x)  | (x)  |      | (x)  | (x)  | (x)  | (x)  |
 | Franck  |      |      |      |      |      |  x   |  x   |  x   |  x   |  x   |
 | Loïc    |      |      |  x   |  x   |      |  x   |      |      |      |      |
 | Raphaël |  x   |   x  |  x   |  x   |  x   |      |      |      |      |  x   |
