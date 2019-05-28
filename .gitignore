@@ -20,5 +20,5 @@ ipynb/index.rst
 
 ipynb/index.html
 
-snippet/cffi/V5_cython/*.c
-snippet/cffi/V5_cython/*.html
+snippet/dtw_cort_dist/V5_cython/*.c
+snippet/dtw_cort_dist/V5_cython/*.html

@@ -1,0 +1,94 @@
+
+.fragment.current-visible.visible:not(.current-fragment) {
+    display: none;
+    height:0px;
+    line-height: 0px;
+    font-size: 0px;
+}
+
+.fragment.fade-out.visible:not(.current-fragment) {
+    display: none;
+    height:0px;
+    line-height: 0px;
+    font-size: 0px;
+}
+
+.fragment.fade-out.visible.current-fragment {
+    display: none;
+    height:0px;
+    line-height: 0px;
+    font-size: 0px;
+}
+
+.container{
+    display: flex;
+}
+
+.col{
+    flex: 1;
+}
+
+.reveal p.small {
+    line-height: 0px;
+}
+
+.reveal p {
+    padding: 0px;
+    margin-top: 0.1em;
+}
+
+.rendered_html * + ul {
+    margin-top: 0.1em;
+}
+
+.rendered_html h1:first-child {
+    margin-top: 0em;
+    margin-bottom: 1.0em;
+}
+
+.rendered_html h2:first-child {
+    margin-top: 0em;
+    margin-bottom: 1.0em;
+}
+
+div.output_subarea {
+    padding: 0em;
+    overflow-y: hidden;
+}
+
+.rendered_html h3 {
+    font-size: 128.6%;
+    margin: 0.8em 0 0.8em 0;
+    font-weight: bold;
+    line-height: 1.0;
+}
+
+.rendered_html h2 {
+    margin: 0.8em 0 0.5em 0em;
+}
+
+.rendered_html h1 {
+    margin: 0.8em 0 0.5em 0em;
+}
+
+div.output_area .MathJax_Display {
+    text-align: center !important;
+}
+
+.reveal section img {
+    margin: 6px 0px;
+}
+
+.reveal li{
+    margin-top: 10px;
+}
+
+.reveal li:first-child {
+    margin-top:0;
+}
+
+.reveal .controls .navigate-down, .reveal .controls .navigate-up {
+    display: none;
+}
+
+.rendered_html em { font-style: normal; font-weight: bold; color: red; }

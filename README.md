@@ -37,7 +37,7 @@ sur 2 semaines
 - Introduction, rappels langage Python et gestion de src [1j : 12/06] (Pierre,
 Raphaël et Loïc)
 
-- Numpy [0.5j : 13/06] (Loïc et Raphaël)
+- Numpy / Scipy [0.5j : 13/06] (Loïc et Raphaël)
 
   - fancy indexing, masking
   - presentation of the example "dtw_cort_dist"
@@ -77,10 +77,10 @@ Raphaël et Loïc)
 
 - Different ways to speed up native Python code [0.5j] (Pierre - Franck)
 
-  * using on the fly compiler (like e.g. numba)
-  * using static compilers (like e.g. pythran)
-  * using cython (évocation juste)
-  * transonic
+  - using on the fly compiler (like e.g. numba)
+  - using static compilers (like e.g. pythran)
+  - using cython (évocation juste)
+  - transonic
 
 - Tools for parallelisation [0.25j]
 

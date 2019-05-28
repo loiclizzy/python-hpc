@@ -1,18 +1,28 @@
 from pathlib import Path
 import sys
 
+titles = {
+    "Intro hpc": "Introduction HPC",
+    "Packaging": "Package and document your Python software",
+    "Numpy scipy": "Numpy / Scipy",
+}
+
 this_dir = Path(__file__).parent
 
-ipynb_files = tuple(this_dir.glob("*.ipynb"))
+ipynb_files = sorted(tuple(this_dir.glob("*.ipynb")))
 
-lines = [[] for day in range(4)]
+lines = [[] for day in range(5)]
 
 for path in ipynb_files:
     name = path.with_suffix("").name
     day = int(name[0])
-    text = name[3:].capitalize().replace("_", " ")
+    title = name[3:].capitalize().replace("_", " ")
+
+    if title in titles:
+        title = titles[title]
+
     path_html = name + ".slides.html"
-    lines[day].append(f"- `{text} <{path_html}>`_")
+    lines[day].append(f"- `{title} <{path_html}>`_")
 
 back = "\n"
 
@@ -22,7 +32,6 @@ Python for HPC training UGA 2019
 """
 
 for iday, lines_day in enumerate(lines):
-    lines_day.sort()
     code += f"""
 Day {iday}
 -----

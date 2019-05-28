@@ -5,6 +5,8 @@ IPYNBFILES := $(shell find $(IPYNBDIR) -name '*.ipynb' | grep -v ipynb_checkpoin
 
 IPYNBPRES = $(addsuffix .slides.html, $(basename $(IPYNBFILES)))
 
+# TPL_FILE = ipynb/slides_reveal_wide.tpl
+TPL_FILE = ipynb/slides_reveal.tpl
 
 define STR_HELP
 This makefile can be used for
@@ -39,8 +41,8 @@ ipynb/index.rst:
 ipynb/index.html: ipynb/index.rst
 	cd $(IPYNBDIR) && rst2html5 index.rst > index.html
 
-%.slides.html: %.ipynb ipynb/slides_reveal_wide.tpl
-	jupyter-nbconvert $< --reveal-prefix='./reveal.js' --to slides --template ipynb/slides_reveal_wide.tpl
+%.slides.html: %.ipynb $(TPL_FILE)
+	jupyter-nbconvert $< --reveal-prefix='./reveal.js' --to slides --template $(TPL_FILE)
 
 presentations: $(IPYNBPRES) ipynb/index.html
 
