@@ -37,53 +37,59 @@ sur 2 semaines
 - Introduction, rappels langage Python et gestion de src [1j : 12/06] (Pierre,
 Raphaël et Loïc)
 
-- Numpy [0,5j : 13/06] (Loïc et Raphaël)
-
-  _reprendre le contenu de l'initiation + vectorisation_
+- Numpy [0.5j : 13/06] (Loïc et Raphaël)
 
   - fancy indexing, masking
+  - presentation of the example "dtw_cort_dist"
   - broadcast
-  - vectorisation (vectoriser un pb ex : distance euclidienne en calcul matriciel)
+  - vectorizing
 
-- Visualisation - Matplotlib and other tools [0,25j : 13/06] (Loïc et Raphaël)
+- Visualization - Matplotlib and other tools [0.25j : 13/06] (Loïc et Raphaël)
 
-  - matplotlib orienté object (axes, features...) Loïc
-  - figures et animations Loïc
+  - matplotlib object oriented (axes, features...) (Loïc)
+  - figures et animations (Loïc)
   - voir graph plotting python jackc (Raphaël)
   - point bokeh, plotly, seaborn (Raphaël)
 
-- Pandas [0,25j : 13/06] (Eric - Raphaël)
+- Pandas [0.25j : 13/06] (Eric - Raphaël)
   - load, query, display, export
 
-- Packaging et documentation [0,5j : 17/06] (Raphaël et Pierre)
+- Packaging et documentation [0.5j : 17/06] (Raphaël et Pierre)
 
-  ex : fluidsim et autres
+- General introduction HPC with Python [0.25j] (Pierre)
 
-- wrapping low level code and/or compiled code [0,5j : 17/06] (Franck et Loic)
+- Profiling [0.25j] (Pierre et Franck)
 
-  - présentation du running example (pour wrap/calcul intensif et optimisation)
-  - cffi (for external compiled C code)
-  - f2py (to call fortran code from Python)
-  - swig (to wrap external code -- like C, C++, Fortran -- and call it from Python)
-  - pybind11 (C++)
+  See the book "High performance Python".
 
-- Calcul intensif et optimisation [2j : 18/06 et 19/06]
+  - perf
+  - cprofile (pstat, SnakeViz)
+  - pyperf
+  - line_profiler
+  - kcachegrind
+  - Memory (memory_profiler, ...)
 
-  - Profiling (Pierre et Franck)
-    - cprofile (pstat...)
-    - kcachegrind
-    - Memory (see HPC book oreilly)
+- Wrapping low level code and/or compiled code [0.5j] (Franck et Loic)
 
-  - Different ways to speed up native Python code (Pierre - Franck)
-    - using on the fly compiler (like e.g. numba)
-    - using static compilers (like e.g. pythran)
-    - using cython (évocation juste)
+  Mainly for legacy code...
 
-  - Tools for parallelisation (e.g. threading / multiprocessing / futures / openmp / mpi4py / GPU / joblib / dask ) (Pierre - Franck)
+  ctypes, cffi, cython, cppyy, pybind11, f2py, pyo3, swig
 
-  - Déploiement sur cluster et mésocentre (lien singularity, charlie cloud) (Franck - Raphaël)
+- Different ways to speed up native Python code [0.5j] (Pierre - Franck)
 
-Exemples tranversaux (wrapping, optimisation...)
+  * using on the fly compiler (like e.g. numba)
+  * using static compilers (like e.g. pythran)
+  * using cython (évocation juste)
+  * transonic
+
+- Tools for parallelisation [0.25j]
+
+  threading / multiprocessing / concurrent.futures / OpenMP / mpi4py / GPU /joblib / dask (Pierre - Franck)
+
+- Déploiement sur cluster et mésocentre (lien singularity, charlie cloud) [0.25j] (Franck - Raphaël)
+
+- Travaux sur projets personnels [0.5j au moins]
+
 
 ### Présence formateurs
 
@@ -96,7 +102,7 @@ Exemples tranversaux (wrapping, optimisation...)
 | Franck  |      |      |      |      |      |  x   |  x   |  x   |  x   |  x   |
 | Loïc    |      |      |  x   |  x   |      |  x   |      |      |      |      |
 | Raphaël |  x   |   x  |  x   |  x   |  x   |      |      |      |      |  x   |
-| Pierre  |  x   |   x  |      |      |  x   |      |  x   |  x   |  x   |      |
+| Pierre  |  x   |   x  |      |      |  x   |  x   | (x)  |  x   |  x   | (x)  |
 | Cyrille |      |      |      |      |      |      |      |      |      |      |
 
 ## To be done before the first day of the training session
