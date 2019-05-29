@@ -2,9 +2,17 @@ from pathlib import Path
 import sys
 
 titles = {
-    "Intro hpc": "Introduction HPC",
-    "Packaging": "Package and document your Python software",
+    "About": "About this training",
+    "Intro first steps": "First step with Python",
+    "Intro language": "Some characteristics of the language",
+    "Readwritefiles": "Read and write files",
+    "Import standard library": "Import statements and the standart library",
+    "Data struct": "Standard data structure (list, tuple, set and dict)",
+    "Intro hpc": "Introduction HPC with Python",
+    "Packaging": "Packaging, documentation and unittest",
     "Numpy scipy": "Numpy / Scipy",
+    "Wrapping": "Wrapping compiled code",
+    "Accelerators": "Tools to accelerate Python code",
 }
 
 this_dir = Path(__file__).parent
@@ -15,14 +23,15 @@ lines = [[] for day in range(5)]
 
 for path in ipynb_files:
     name = path.with_suffix("").name
-    day = int(name[0])
-    title = name[3:].capitalize().replace("_", " ")
+    index, title = name.split("_", 1)
+    day = int(index[0])
+    title = title.capitalize().replace("_", " ")
 
     if title in titles:
         title = titles[title]
 
     path_html = name + ".slides.html"
-    lines[day].append(f"- `{title} <{path_html}>`_")
+    lines[day].append(f"- [{index}] `{title} <{path_html}>`_")
 
 back = "\n"
 

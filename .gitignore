@@ -1,7 +1,7 @@
 *.pyd*
 *.pyc
 *~
-*tmp
+**/tmp
 *.so
 *.o
 *.pstats

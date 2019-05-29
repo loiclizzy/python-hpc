@@ -31,6 +31,7 @@ help:
 clean:
 	rm -f ipynb/*.slides.html
 	rm -f ipynb/index.html
+	rm -rf ipynb/tmp
 
 lab:
 	jupyter-lab
