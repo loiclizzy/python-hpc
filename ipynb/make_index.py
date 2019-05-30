@@ -8,6 +8,8 @@ titles = {
     "Readwritefiles": "Read and write files",
     "Import standard library": "Import statements and the standart library",
     "Data struct": "Standard data structure (list, tuple, set and dict)",
+    "Oop encapsulation": "Object-oriented programming - encapsulation",
+    "Oop inheritance": "Object-oriented programming - inheritance",
     "Intro hpc": "Introduction HPC with Python",
     "Packaging": "Packaging, documentation and unittest",
     "Numpy scipy": "Numpy / Scipy",
