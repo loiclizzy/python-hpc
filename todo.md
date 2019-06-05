@@ -7,9 +7,12 @@
 - [?] Make a page in our website with the presentations
 
 - [Cyrille] Create a virtual machine (Ubuntu, cf.
-  https://fluiddyn.readthedocs.io/en/latest/setup_ubuntu1804.html) + one has to be able to download it from the web + put the link in the README.
+  https://fluiddyn.readthedocs.io/en/latest/setup_ubuntu1804.html)
 
-- 12_pandas.ipynb !
+  + one has to be able to download it from the web
+  + link in the README.
+
+- [Eric, Raphaël] 12_pandas.ipynb !
 
 - [Pierre] 20_packaging.ipynb : add documentation and testing
 
@@ -19,7 +22,9 @@
 
 - [Pierre] Complete 22_profiling.ipynb
 
-- [Franck, Loic] 30_wrapping.ipynb
+- [Franck, Loic] 30_wrapping.ipynb (que retenir des exemples?)
+
+- [Pierre, Franck] 31_accelerators.ipynb (que retenir des exemples?)
 
 - [Pierre] Pythran without Transonic, (loop and vec) for Transonic and Numba
 
