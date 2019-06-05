@@ -125,9 +125,10 @@ Linux/GNU. Windows (at least without
 macOS are less adapted for this particular application. Python is a
 cross-platform language but nevertheless, you will get a better experience for
 HPC with Python on Linux. Therefore, we encourage the participant to work
-during this training with a (real or `virtual
-<https://www.virtualbox.org/wiki/Downloads>`_) Linux machine. Of course, if you
-can't or don't want to use Linux, come with your computer on Windows or macOS.
+during this training with a (real or
+[virtual](https://www.virtualbox.org/wiki/Downloads)) Linux machine. Of course,
+if you can't or don't want to use Linux, come with your computer on Windows or
+macOS.
 
 #### Install Python and utilities
 

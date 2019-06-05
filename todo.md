@@ -6,6 +6,9 @@
 
 - [?] Make a page in our website with the presentations
 
+- [?] Create a virtual machine (Ubuntu?, cf.
+  https://fluiddyn.readthedocs.io/en/latest/setup_ubuntu1804.html) ?
+
 - 12_pandas.ipynb !
 
 - [Pierre] 20_packaging.ipynb : add documentation and testing
