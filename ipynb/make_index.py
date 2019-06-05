@@ -15,6 +15,7 @@ titles = {
     "Numpy scipy": "Numpy / Scipy",
     "Wrapping": "Wrapping compiled code",
     "Accelerators": "Tools to accelerate Python code",
+    "Parallel": "Parallel computing (CPU bounded)",
 }
 
 this_dir = Path(__file__).parent

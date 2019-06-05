@@ -54,7 +54,7 @@ Raphaël et Loïc)
 - Pandas [0.25j : 13/06] (Eric - Raphaël)
   - load, query, display, export
 
-- Packaging et documentation [0.5j : 17/06] (Raphaël et Pierre)
+- Packaging, documentation and testing [0.5j : 17/06] (Raphaël et Pierre)
 
 - General introduction HPC with Python [0.25j] (Pierre)
 

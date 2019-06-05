@@ -16,8 +16,6 @@
 
 - [Pierre] 20_packaging.ipynb : add documentation and testing
 
-- [Pierre] Split intro HPC and fill 31_accelerators.ipynb and 40_parallel.ipynb
-
 - [Franck] Split 21_pres_algos_dtw_cort.ipynb in more than one page!
 
 - [Pierre] Complete 22_profiling.ipynb
@@ -34,3 +32,5 @@
 
 - [Franck, Raphaël, Cyrille] présentation 41_cluster.ipynb (Charliecloud pour
   Cyrille)
+
+- [Franck] Cleanup old_snippet and delete this directory
