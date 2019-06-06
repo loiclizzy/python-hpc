@@ -6,12 +6,6 @@
 
 - [?] Make a page in our website with the presentations
 
-- [Cyrille] Create a virtual machine (Ubuntu, cf.
-  https://fluiddyn.readthedocs.io/en/latest/setup_ubuntu1804.html)
-
-  + one has to be able to download it from the web
-  + link in the README.
-
 - [Eric, Raphaël] 12_pandas.ipynb !
 
 - [Pierre] 20_packaging.ipynb : add documentation and testing
@@ -28,7 +22,7 @@
 
 - [Pierre, Franck] parallel (presentation + examples)
 
-- [Cyrille] dtw_cort_dist avec MPI
+- [Cyrille] dtw_cort_dist avec MPI (done!!! To validate)
 
 - [Franck, Raphaël, Cyrille] présentation 41_cluster.ipynb (Charliecloud pour
   Cyrille)

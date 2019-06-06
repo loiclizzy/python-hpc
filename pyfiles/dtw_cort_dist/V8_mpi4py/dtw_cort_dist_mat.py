@@ -18,14 +18,14 @@ def serie_pair_index_generator(number, rank, size):
     :returns: pairs (lower, greater)
     :rtype: a generator
     """
-    start = rank*number//size
-    end = min(number, (rank+1)*number//size)
+    start = rank*number//(size*2)
+    end_inf = min((number+1)//2, (rank+1)*((number+1)//2)//size)
+    end_sup = min(number//2, (rank+1)*number//(size*2))
     return (
         (_idx_greater, _idx_lower)
-        for _idx_greater in range(start, end)
+        for _idx_greater in (i for j in (range(start, end_inf), range(number-1-start, number-1-end_sup, -1)) for i in j)
         for _idx_lower in range(_idx_greater)
     )
-
 
 def DTWDistance(s1, s2):
     """ Computes the dtw between s1 and s2 with distance the absolute distance
