@@ -6,6 +6,9 @@
 *.o
 *.pstats
 
+_build
+build
+__pycache__
 __pythran__
 
 \#*\#
@@ -20,5 +23,5 @@ ipynb/index.rst
 
 ipynb/index.html
 
-snippet/dtw_cort_dist/V5_cython/*.c
-snippet/dtw_cort_dist/V5_cython/*.html
+pyfiles/dtw_cort_dist/V5_cython/*.c
+pyfiles/dtw_cort_dist/V5_cython/*.html

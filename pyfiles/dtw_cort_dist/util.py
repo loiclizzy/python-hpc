@@ -53,7 +53,7 @@ def main(compute, only_init=False):
 
     t0 = time()
     _dist_mat_dtw, _dist_mat_cort = compute(series, nb_series)
-    print("\nelapsed time = {:.3f} s".format(time() - t0))
+    print("elapsed time = {:.3f} s".format(time() - t0))
 
     if args.v:
         import matplotlib.pyplot as plt

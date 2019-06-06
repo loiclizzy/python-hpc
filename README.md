@@ -54,7 +54,7 @@ Raphaël et Loïc)
 - Pandas [0.25j : 13/06] (Eric - Raphaël)
   - load, query, display, export
 
-- Packaging et documentation [0.5j : 17/06] (Raphaël et Pierre)
+- Packaging, documentation and testing [0.5j : 17/06] (Raphaël et Pierre)
 
 - General introduction HPC with Python [0.25j] (Pierre)
 
@@ -101,7 +101,7 @@ Raphaël et Loïc)
 | Eric    | (x)  | (x)  | (x)  | (x)  | (x)  |      | (x)  | (x)  | (x)  | (x)  |
 | Franck  |      |      |      |      |      |  x   |  x   |  x   |  x   |  x   |
 | Loïc    |      |      |  x   |  x   |      |  x   |      |      |      |      |
-| Raphaël |  x   |   x  |  x   |  x   |  x   |      |      |      |      |  x   |
+| Raphaël |      |      |  x   |  x   |  x   |      |      |      |      |  x   |
 | Pierre  |  x   |   x  |      |      |  x   |  x   | (x)  |  x   |  x   | (x)  |
 | Cyrille |      |      |      |      |      |      |      |      |      |      |
 
@@ -125,9 +125,13 @@ Linux/GNU. Windows (at least without
 macOS are less adapted for this particular application. Python is a
 cross-platform language but nevertheless, you will get a better experience for
 HPC with Python on Linux. Therefore, we encourage the participant to work
-during this training with a (real or `virtual
-<https://www.virtualbox.org/wiki/Downloads>`_) Linux machine. Of course, if you
-can't or don't want to use Linux, come with your computer on Windows or macOS.
+during this training with a (real or
+[virtual](https://www.virtualbox.org/wiki/Downloads)) Linux machine. Of course,
+if you can't or don't want to use Linux, come with your computer on Windows or
+macOS.
+We offer a linux virtual machine ready to use (via virtualbox 6.X) for training.
+It can be downloaded [here](https://filesender.renater.fr/?s=download&token=62c5f530-7def-8c32-4e3c-d205299a5201)
+
 
 #### Install Python and utilities
 
