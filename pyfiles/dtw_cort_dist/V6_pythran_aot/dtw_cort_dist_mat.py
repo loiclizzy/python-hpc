@@ -6,8 +6,7 @@ from pathlib import Path
 
 import numpy as np
 
-from transonic import jit, wait_for_all_extensions
-
+from transonic import boost
 
 util = run_path(Path(__file__).absolute().parent.parent / "util.py")
 
@@ -83,8 +82,8 @@ def cort(s1, s2):
     return num / (np.sqrt(sum_square_x * sum_square_y))
 
 
-@jit
-def compute(series, nb_series):
+@boost
+def compute(series: "float64[:, :]", nb_series: int):
     gen = serie_pair_index_generator(nb_series)
     _dist_mat_dtw = np.zeros((nb_series, nb_series), dtype=np.float64)
     _dist_mat_cort = np.zeros((nb_series, nb_series), dtype=np.float64)
@@ -103,5 +102,3 @@ main = partial(util["main"], compute)
 
 if __name__ == "__main__":
     main()
-    # to be sure that the extension will be ready for the next execution
-    wait_for_all_extensions()
