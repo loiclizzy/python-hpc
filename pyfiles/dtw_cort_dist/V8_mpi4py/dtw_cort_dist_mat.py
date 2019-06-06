@@ -18,14 +18,19 @@ def serie_pair_index_generator(number, rank, size):
     :returns: pairs (lower, greater)
     :rtype: a generator
     """
-    start = rank*number//(size*2)
-    end_inf = min((number+1)//2, (rank+1)*((number+1)//2)//size)
-    end_sup = min(number//2, (rank+1)*number//(size*2))
-    return (
-        (_idx_greater, _idx_lower)
-        for _idx_greater in (i for j in (range(start, end_inf), range(number-1-start, number-1-end_sup, -1)) for i in j)
-        for _idx_lower in range(_idx_greater)
-    )
+    assert rank < size
+    start = rank * number // (size * 2)
+    end_inf = min((number + 1) // 2, (rank + 1) * ((number + 1) // 2) // size)
+    end_sup = min(number // 2, (rank + 1) * number // (size * 2))
+
+    for range_ in (
+        range(start, end_inf),
+        range(number - 1 - start, number - 1 - end_sup, -1),
+    ):
+        for _idx_greater in range_:
+            for _idx_lower in range(_idx_greater):
+                yield _idx_greater, _idx_lower
+
 
 def DTWDistance(s1, s2):
     """ Computes the dtw between s1 and s2 with distance the absolute distance
@@ -87,9 +92,7 @@ def compute(series, nb_series):
     comm = MPI.COMM_WORLD
     gen = serie_pair_index_generator(nb_series, comm.rank, comm.size)
     _dist_mat_dtw = np.zeros((nb_series, nb_series), dtype=np.float64)
-    _dist_mat_cort = np.zeros((nb_series, nb_series), dtype=np.float64)
-    _dist_mat_dtw_global = np.zeros((nb_series, nb_series), dtype=np.float64)
-    _dist_mat_cort_global = np.zeros((nb_series, nb_series), dtype=np.float64)
+    _dist_mat_cort = np.zeros_like(_dist_mat_dtw)
     for t1, t2 in gen:
         dist_dtw = DTWDistance(series[t1], series[t2])
         _dist_mat_dtw[t1, t2] = dist_dtw
@@ -98,17 +101,19 @@ def compute(series, nb_series):
         _dist_mat_cort[t1, t2] = dist_cort
         _dist_mat_cort[t2, t1] = dist_cort
 
+    _dist_mat_dtw_global = np.zeros_like(_dist_mat_dtw)
+    _dist_mat_cort_global = np.zeros_like(_dist_mat_dtw)
     comm.Reduce(
-    [_dist_mat_cort, MPI.DOUBLE],
-    [_dist_mat_cort_global, MPI.DOUBLE],
-    op = MPI.SUM,
-    root = 0
+        [_dist_mat_cort, MPI.DOUBLE],
+        [_dist_mat_cort_global, MPI.DOUBLE],
+        op=MPI.SUM,
+        root=0,
     )
     comm.Reduce(
-    [_dist_mat_dtw, MPI.DOUBLE],
-    [_dist_mat_dtw_global, MPI.DOUBLE],
-    op = MPI.SUM,
-    root = 0
+        [_dist_mat_dtw, MPI.DOUBLE],
+        [_dist_mat_dtw_global, MPI.DOUBLE],
+        op=MPI.SUM,
+        root=0,
     )
     return _dist_mat_dtw_global, _dist_mat_cort_global
 

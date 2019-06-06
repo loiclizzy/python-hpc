@@ -8,8 +8,6 @@
 
 - [Eric, Raphaël] 12_pandas.ipynb !
 
-- [Pierre] 20_packaging.ipynb : add documentation and testing
-
 - [Franck] Split 21_pres_algos_dtw_cort.ipynb in more than one page!
 
 - [Pierre] Complete 22_profiling.ipynb
@@ -24,7 +22,11 @@
 
 - [Cyrille] dtw_cort_dist avec MPI (done!!! To validate)
 
+- [Pierre] Makefile dans pyfiles/dtw_cort_dist/
+
 - [Franck, Raphaël, Cyrille] présentation 41_cluster.ipynb (Charliecloud pour
   Cyrille)
 
-- [Franck] Cleanup old_snippet and delete this directory
+- [Franck] Cleanup
+  - old_snippet and delete this directory
+  - pyfiles/dtw_cort_dist (fix or delete broken repositories)

@@ -16,7 +16,7 @@ ffi = FFI()
 ffi.cdef("double dtw(double* x, double* y, int size_x, int size_y);")
 my_dir = Path(__file__).absolute().parent
 dllib = ffi.dlopen(
-    str(my_dir / ("distances" + sysconfig.get_config_var("EXT_SUFFIX")))
+    str(my_dir / ("cdtw" + sysconfig.get_config_var("EXT_SUFFIX")))
 )
 
 
