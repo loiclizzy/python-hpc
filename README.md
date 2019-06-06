@@ -102,7 +102,7 @@ Raphaël et Loïc)
 | Franck  |      |      |      |      |      |  x   |  x   |  x   |  x   |  x   |
 | Loïc    |      |      |  x   |  x   |      |  x   |      |      |      |      |
 | Raphaël |  x   |   x  |  x   |  x   |  x   |      |      |      |      |  x   |
-| Pierre  |  x   |   x  |      |      |  x   |  x   | (x)  |  x   |  x   | (x)  |
+| Pierre  |      |      |      |      |  x   |  x   | (x)  |  x   |  x   | (x)  |
 | Cyrille |      |      |      |      |      |      |      |      |      |      |
 
 ## To be done before the first day of the training session
