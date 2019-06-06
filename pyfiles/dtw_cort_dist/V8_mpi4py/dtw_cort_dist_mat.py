@@ -24,7 +24,6 @@ def serie_pair_index_generator(number, rank, size):
         (_idx_greater, _idx_lower)
         for _idx_greater in range(start, end)
         for _idx_lower in range(_idx_greater)
-        if _idx_lower < _idx_greater
     )
 
 
