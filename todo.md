@@ -16,6 +16,8 @@
 
 - [Pierre, Franck] 31_accelerators.ipynb (que retenir des exemples?)
 
+- [Franck] pyfiles/dtw_cort_dist: option -t for testing (no plot) !!!
+
 - [Pierre] Pythran without Transonic, (loop and vec) for Transonic and Numba
 
 - [Pierre, Franck] parallel (presentation + examples)
