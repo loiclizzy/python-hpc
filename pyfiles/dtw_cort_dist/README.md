@@ -1,7 +1,7 @@
 
 ## Timing:
 
-We use [invoke](https://www.pyinvoke.org/) (`pip install invoke`) to build and run the benchmarks.
+We use [invoke](https://www.pyinvoke.org/) (`pip install invoke`) to build and run the benchmarks. The full requirements can be installed with `pip install -r requirements.txt`.
 
 See [how to get autocompletion with invoke](http://docs.pyinvoke.org/en/1.2/invoke.html?highlight=completion#cmdoption-print-completion-script).
 
