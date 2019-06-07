@@ -1,7 +1,11 @@
 
 ## Timing:
 
-We use [invoke](https://www.pyinvoke.org/) (`pip install invoke`) to build and run the benchmarks. After `inv build`, you should get something like this:
+We use [invoke](https://www.pyinvoke.org/) (`pip install invoke`) to build and run the benchmarks.
+
+See [how to get autocompletion with invoke](http://docs.pyinvoke.org/en/1.2/invoke.html?highlight=completion#cmdoption-print-completion-script).
+
+After `inv build`, you should get something like this:
 
 ```bash
 inv bench
@@ -31,4 +35,23 @@ diff V1_numpy_loops/dtw_cort_dist_mat.py V6_pythran/dtw_cort_dist_mat.py
 >
 82a85
 > @jit
+```
+
+For a longer benchmark:
+
+```bash
+inv bench --medium
+V2_c_dtw/dtw_cort_dist_mat.py data_medium.npy
+elapsed time = 60.530 s
+V5_cython/dtw_cort_dist_mat.py data_medium.npy
+elapsed time = 24.439 s
+V6_pythran/dtw_cort_dist_mat.py data_medium.npy
+elapsed time = 24.511 s
+V6_pythran_aot/dtw_cort_dist_mat.py data_medium.npy
+elapsed time = 24.563 s
+V6_pythran_no_transonic/dtw_cort_dist_mat.py data_medium.npy
+elapsed time = 24.586 s
+V7_numba/dtw_cort_dist_mat.py data_medium.npy
+elapsed time = 36.549 s
+
 ```
