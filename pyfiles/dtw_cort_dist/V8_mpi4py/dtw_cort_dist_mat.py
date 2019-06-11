@@ -7,6 +7,7 @@ from pathlib import Path
 import numpy as np
 
 from mpi4py import MPI
+from distances_fort import dtw_cort
 
 util = run_path(Path(__file__).absolute().parent.parent / "util.py")
 
@@ -40,31 +41,8 @@ def DTWDistance(s1, s2):
     :returns: the dtw distance
     :rtype: float64
     """
-    len_s1 = len(s1)
-    len_s2 = len(s2)
-
-    _dtw_mat = np.empty([len_s1, len_s2])
-    _dtw_mat[0, 0] = abs(s1[0] - s2[0])
-
-    #  two special cases : filling first row and columns
-
-    for j in range(1, len_s2):
-        dist = abs(s1[0] - s2[j])
-        _dtw_mat[0, j] = dist + _dtw_mat[0, j - 1]
-
-    for i in range(1, len_s1):
-        dist = abs(s1[i] - s2[0])
-        _dtw_mat[i, 0] = dist + _dtw_mat[i - 1, 0]
-
-    #  filling the matrix
-    for i in range(1, len_s1):
-        for j in range(1, len_s2):
-            dist = abs(s1[i] - s2[j])
-            _dtw_mat[(i, j)] = dist + min(
-                _dtw_mat[i - 1, j], _dtw_mat[i, j - 1], _dtw_mat[i - 1, j - 1]
-            )
-
-    return _dtw_mat[len_s1 - 1, len_s2 - 1]
+    dtw_result = dtw_cort.dtwdistance(s1, s2)
+    return dtw_result
 
 
 def cort(s1, s2):
@@ -76,16 +54,8 @@ def cort(s1, s2):
     :rtype: float64
 
     """
-    num = 0.0
-    sum_square_x = 0.0
-    sum_square_y = 0.0
-    for t in range(len(s1) - 1):
-        slope_1 = s1[t + 1] - s1[t]
-        slope_2 = s2[t + 1] - s2[t]
-        num += slope_1 * slope_2
-        sum_square_x += slope_1 * slope_1
-        sum_square_y += slope_2 * slope_2
-    return num / (np.sqrt(sum_square_x * sum_square_y))
+    cort_result = dtw_cort.cort(s1, s2)
+    return cort_result
 
 
 def compute(series, nb_series):
