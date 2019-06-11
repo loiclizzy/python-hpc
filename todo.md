@@ -2,8 +2,6 @@
 
 - [Eric] Complete the first notebook (000_about.ipynb) with administrative information.
 
-- [Pierre] Check / improve OOP presentations
-
 - [?] Make a page in our website with the presentations
 
 - [Eric, Raphaël] 12_pandas.ipynb !
