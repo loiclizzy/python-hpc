@@ -34,6 +34,9 @@ def main(compute, only_init=False):
         "-n", type=int, default=None, help="number of series (default all 200)"
     )
     parser.add_argument(
+        "-s", type=str, default=None, help="save the matrices (provide prefixes)"
+    )
+    parser.add_argument(
         "-v", action="store_true", default=None, help="visualize the matrix"
     )
 
@@ -55,12 +58,18 @@ def main(compute, only_init=False):
     _dist_mat_dtw, _dist_mat_cort = compute(series, nb_series)
     print("elapsed time = {:.3f} s".format(time() - t0))
 
+    if args.s:
+        dtw_mat = "{}_dtw".format(args.s)
+        np.save(dtw_mat, _dist_mat_dtw)
+        cort_mat = "{}_cort".format(args.s)
+        np.save(cort_mat, _dist_mat_cort)
+
     if args.v:
         import matplotlib.pyplot as plt
 
         fig, axes = plt.subplots(2)
-        cax0 = axes[0].imshow(_dist_mat_dtw, cmap=plt.cm.gray)
+        axes[0].imshow(_dist_mat_dtw, cmap=plt.cm.gray)
         axes[0].set_title("dtw")
-        cax1 = axes[1].imshow(_dist_mat_cort, cmap=plt.cm.gray)
+        axes[1].imshow(_dist_mat_cort, cmap=plt.cm.gray)
         axes[1].set_title("cort")
         plt.show()
