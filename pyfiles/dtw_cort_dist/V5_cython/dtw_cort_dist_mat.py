@@ -10,6 +10,7 @@ from dtw_cort import cort, DTWDistance
 
 util = run_path(Path(__file__).absolute().parent.parent / "util.py")
 
+
 def serie_pair_index_generator(number):
     """ generator for pair index (i, j) such that i < j < number
 
@@ -20,8 +21,7 @@ def serie_pair_index_generator(number):
     return (
         (_idx_greater, _idx_lower)
         for _idx_greater in range(number)
-        for _idx_lower in range(number)
-        if _idx_lower < _idx_greater
+        for _idx_lower in range(_idx_greater)
     )
 
 

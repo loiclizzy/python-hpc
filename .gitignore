@@ -5,6 +5,7 @@
 *.so
 *.o
 *.pstats
+*.mod
 
 _build
 build
@@ -25,3 +26,5 @@ ipynb/index.html
 
 pyfiles/dtw_cort_dist/V5_cython/*.c
 pyfiles/dtw_cort_dist/V5_cython/*.html
+**/V*/res_cort.npy
+**/V*/res_dtw.npy

@@ -17,6 +17,7 @@ cffi
 cython
 numba
 pythran
+xsimd
 transonic
 # parallel
 mpi4py

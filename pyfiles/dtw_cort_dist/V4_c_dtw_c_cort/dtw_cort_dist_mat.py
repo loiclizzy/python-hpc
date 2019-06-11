@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 import numpy as np
 import sysconfig
@@ -25,8 +25,11 @@ def serie_pair_index_generator(number):
     :returns: pairs (lower, greater)
     :rtype: a generator
     """
-    return ((_idx_greater, _idx_lower) for _idx_greater in range(number)
-            for _idx_lower in range(number) if _idx_lower < _idx_greater)
+    return (
+        (_idx_greater, _idx_lower)
+        for _idx_greater in range(number)
+        for _idx_lower in range(_idx_greater)
+    )
 
 
 def cDTW(serie_a, serie_b):
@@ -49,6 +52,7 @@ def cort(serie_a, serie_b):
     b_ptr = ffi.cast("double*", serie_b.ctypes.data)
     ret = dllib.cort(a_ptr, b_ptr, len(serie_a))
     return ret
+
 
 def compute(series, nb_series):
     gen = serie_pair_index_generator(nb_series)

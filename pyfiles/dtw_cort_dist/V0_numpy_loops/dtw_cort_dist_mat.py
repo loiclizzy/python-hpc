@@ -5,7 +5,6 @@ from runpy import run_path
 from pathlib import Path
 
 import numpy as np
-import math
 
 util = run_path(Path(__file__).absolute().parent.parent / "util.py")
 
@@ -20,8 +19,7 @@ def serie_pair_index_generator(number):
     return (
         (_idx_greater, _idx_lower)
         for _idx_greater in range(number)
-        for _idx_lower in range(number)
-        if _idx_lower < _idx_greater
+        for _idx_lower in range(_idx_greater)
     )
 
 
@@ -60,22 +58,24 @@ def DTWDistance(s1, s2):
 
 
 def cort(s1, s2):
-    """ Computes the cort between series one and two (assuming they have the same length)
+    """ Computes the cort between serie one and two (assuming they have the same length)
 
-    :param s1: the first series (or any iterable over floats64)
-    :param s2: the second series (or any iterable over floats64)
+    :param s1: the first serie (or any iterable over floats64)
+    :param s2: the second serie (or any iterable over floats64)
     :returns: the cort distance
     :rtype: float64
 
     """
-
-    slope_1 = s1[1:] - s1[:-1]
-    slope_2 = s2[1:] - s2[:-1]
-    num = np.sum(slope_1 * slope_2)
-    sum_square_x = np.sum(slope_1 * slope_1)
-    sum_square_y = np.sum(slope_2 * slope_2)
-
-    return num / (math.sqrt(sum_square_x * sum_square_y))
+    num = 0.0
+    sum_square_x = 0.0
+    sum_square_y = 0.0
+    for t in range(len(s1) - 1):
+        slope_1 = s1[t + 1] - s1[t]
+        slope_2 = s2[t + 1] - s2[t]
+        num += slope_1 * slope_2
+        sum_square_x += slope_1 * slope_1
+        sum_square_y += slope_2 * slope_2
+    return num / (np.sqrt(sum_square_x * sum_square_y))
 
 
 def compute(series, nb_series):
