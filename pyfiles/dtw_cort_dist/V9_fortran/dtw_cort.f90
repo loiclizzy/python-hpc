@@ -49,9 +49,12 @@ module dtw_cort
 
             integer :: len_s1, t
             doubleprecision :: slope_1, slope_2
-            doubleprecision :: num=0, sum_square_x=0, sum_square_y=0
+            doubleprecision :: num, sum_square_x, sum_square_y
 
             len_s1 = size(s1)
+            num = 0
+            sum_square_x = 0
+            sum_square_y = 0
 
             do t=1, len_s1 - 1
                 slope_1 = s1(t + 1) - s1(t)
@@ -61,7 +64,7 @@ module dtw_cort
                 sum_square_y = sum_square_y + slope_2 * slope_2
             end do
 
-            cort = num / dsqrt(sum_square_x*sum_square_x)
+            cort = num / (dsqrt(sum_square_x*sum_square_y))
 
         end function cort
 

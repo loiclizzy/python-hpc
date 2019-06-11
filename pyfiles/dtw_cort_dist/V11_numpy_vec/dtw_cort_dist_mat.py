@@ -62,8 +62,8 @@ def DTWDistance(s1, s2):
 def cort(s1, s2):
     """ Computes the cort between series one and two (assuming they have the same length)
 
-    :param s1: the first serie (or any iterable over floats64)
-    :param s2: the second serie (or any iterable over floats64)
+    :param s1: the first series (or any iterable over floats64)
+    :param s2: the second series (or any iterable over floats64)
     :returns: the cort distance
     :rtype: float64
 
