@@ -19,7 +19,6 @@
 - [Franck] pyfiles/dtw_cort_dist:
 
   - option -t for testing (no plot) !!!
-  - V10_numpy_vec
 
 - [Pierre] Pythran without Transonic, (loop and vec) for Transonic and Numba
 
