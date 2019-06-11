@@ -169,7 +169,7 @@ Please tell us before the training if it does not work.
 #### Install few packages in your base conda environment
 
 ```
-conda install ipython spyder jupyter numpy scipy pandas matplotlib
+conda install --file requirements.txt
 ```
 
 #### Check your environment

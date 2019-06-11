@@ -1,0 +1,24 @@
+# to be used with:
+# conda install --file requirements.txt
+# utilities
+ipython
+spyder
+jupyter
+invoke
+# base numerics
+numpy
+scipy
+matplotlib
+pandas
+h5py
+# wrapper
+cffi
+# accelerators
+cython
+numba
+pythran
+transonic
+# parallel
+mpi4py
+dask
+joblib
