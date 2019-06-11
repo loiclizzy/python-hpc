@@ -12,7 +12,10 @@ def clean(c):
     for path in directories:
         if (path / "Makefile").exists():
             c.run(f"cd {path} && make clean", echo=True)
-
+            for algo in ("dtw", "cort"):
+                f = path / "ref_{algo}.npy"
+                if f.exists():
+                    f.unlink()
 
 @task
 def build(c):
