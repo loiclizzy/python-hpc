@@ -1,6 +1,7 @@
 # to be used with:
 # conda install --file requirements.txt
 # utilities
+python==3.7
 ipython
 spyder
 jupyter
