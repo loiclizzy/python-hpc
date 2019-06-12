@@ -6,6 +6,7 @@
 *.o
 *.pstats
 *.mod
+*.ipynb
 
 _build
 build
